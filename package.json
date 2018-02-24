@@ -1,0 +1,20 @@
+{
+  "name": "scnsrc-webhook",
+  "version": "0.1.0",
+  "description": "Discord webhook that checks for new releases on SceneSource",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ThaTiemsz/scnsrc-webhook.git"
+  },
+  "author": "Tiemen",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ThaTiemsz/scnsrc-webhook/issues"
+  },
+  "homepage": "https://github.com/ThaTiemsz/scnsrc-webhook#readme",
+  "dependencies": {
+    "discord.js": "^11.3.0",
+    "rss-feed-emitter": "^2.0.0"
+  }
+}
