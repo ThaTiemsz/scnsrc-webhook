@@ -19,8 +19,9 @@ feed.on("new-item", async item => {
         await fs.writeFileSync("./data.json", JSON.stringify(data))
         console.log("[DATA] Wrote to data.json")
     }
-    let categories = item.categories.join(" | ")
-    if (categories.includes("Offtopic")) return // filter off-topic out
+    const categories = item.categories.join(" | ")
+    const ignoreList = ["Offtopic", "Applications", "Music"]
+    if (categories.some(cat => ignoreList.includes(cat))) return
     let color = categories.includes("TV") ? "AQUA" : categories.includes("Movies") ? "PURPLE" : "GREY"
 
     const embed = new RichEmbed()
