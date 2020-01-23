@@ -19,13 +19,13 @@ feed.on("new-item", async item => {
         await fs.writeFileSync("./data.json", JSON.stringify(data))
         console.log("[DATA] Wrote to data.json")
     }
-    const categories = item.categories.join(" | ")
+    const categories = item.categories
     const ignoreList = ["Offtopic", "Applications", "Music"]
     if (categories.some(cat => ignoreList.includes(cat))) return
     let color = categories.includes("TV") ? "AQUA" : categories.includes("Movies") ? "PURPLE" : "GREY"
 
     const embed = new RichEmbed()
-        .setAuthor(categories)
+        .setAuthor(categories.join(" | "))
         .setTitle(item.title)
         .setURL(item.link)
         .setColor(color)
