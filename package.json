@@ -14,7 +14,7 @@
   },
   "homepage": "https://github.com/ThaTiemsz/scnsrc-webhook#readme",
   "dependencies": {
-    "discord.js": "^11.3.0",
-    "rss-feed-emitter": "^2.0.0"
+    "discord.js": "^12.2.0",
+    "rss-feed-emitter": "^3.1.2"
   }
 }

@@ -1,12 +1,11 @@
-const { WebhookClient, RichEmbed } = require("discord.js")
-const { writeFileSync } = require("fs")
-const { promisify } = require("util")
+const { WebhookClient, MessageEmbed } = require("discord.js")
+const { writeFile } = require("fs").promises
 const RSSFeedEmitter = require("rss-feed-emitter")
 const config = require("./config")
 const data = require("./data.json")
-const webhook = new WebhookClient(config.id, config.token, { disableEveryone: true })
+
+const webhook = new WebhookClient(config.id, config.token)
 const feed = new RSSFeedEmitter()
-const writeFile = promisify(writeFileSync)
 
 console.log("[WEBHOOK] Ready!")
 
@@ -21,12 +20,14 @@ feed.on("new-item", async item => {
         await writeFile("./data.json", JSON.stringify(data))
         console.log("[DATA] Wrote to data.json")
     }
+
     const categories = item.categories
     const whiteList = ["TV", "Movies", "BluRay", "BDRip", "DVDRip", "HD"]
     if (!categories.some(cat => whiteList.includes(cat))) return
+
     let color = categories.includes("TV") ? "AQUA" : categories.includes("Movies") ? "PURPLE" : "GREY"
 
-    const embed = new RichEmbed()
+    const embed = new MessageEmbed()
         .setAuthor(categories.join(" | "))
         .setTitle(item.title)
         .setURL(item.link)
