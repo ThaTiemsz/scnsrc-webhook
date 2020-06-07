@@ -35,7 +35,7 @@ feed.on("new-item", async item => {
         .setTimestamp(item.pubDate)
 
     console.log("[HOOK] Sending message")
-    webhook.send("New release!", { embeds: [embed] })
+    webhook.send("New release!", embed)
      .then(msg => console.log(`[HOOK] Message ${msg.id} sent!`))
      .catch(console.error)
 })
